@@ -67,7 +67,7 @@
 						</div>
 						<div class="frm-content">
 							<div class="frm-field">
-								<input type="tel" placeholder="0338771827" pattern="^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$" name="tel" id="tel" required>
+								<input type="tel" placeholder="0338771827" pattern="^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$" minlength="11" maxlength="11"  name="tel" id="tel" required>
 							</div>
 							<div class="frm-error"></div>
 						</div>
@@ -121,6 +121,7 @@
 				typeMismatch: 'Enter the correct format',
 				patternMismatch: 'Enter the correct structure',
 				tooShort: 'Enter the correct amount',
+				badInput: 'Enter the style'
 			}
 			function showError() {
 				if (inputEl.validity.valueMissing) {
@@ -131,6 +132,9 @@
 				}
 				else if (inputEl.validity.patternMismatch) {
 					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.patternMismatch +'</span>');
+				}
+				else if (inputEl.validity.badInput) {
+					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.badInput +'</span>');
 				}
 				else if (inputEl.validity.tooShort) {
 					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.tooShort +'</span>');
