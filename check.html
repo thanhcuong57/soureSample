@@ -111,27 +111,34 @@
 		function checkValidation(e) {
 			var inputEl = e;
 			var _frmrow = $(inputEl).closest('.frm-row');
-			if(!inputEl.validity.valid) {
-				showError();
-			} else {
-				_frmrow.removeClass('is-error').find('.frm-error span').hide();
-			};
+			// if(!inputEl.validity.valid) {
+			// 	showError();
+			// } else {
+			// 	_frmrow.removeClass('is-error').find('.frm-error span').hide();
+			// };
+			var contentError = {
+				valueMissing: 'Required item',
+				typeMismatch: 'Enter the correct format',
+				patternMismatch: 'Enter the correct structure',
+				tooShort: 'Enter the correct amount',
+			}
 			function showError() {
 				if (inputEl.validity.valueMissing) {
-					_frmrow.addClass('is-error').find('.frm-error').html('<span>Required item</span>');
+					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.valueMissing +'</span>');
 				}
 				else if (inputEl.validity.typeMismatch) {
-					_frmrow.addClass('is-error').find('.frm-error').html('<span>Enter the correct format</span>');
+					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.typeMismatch +'</span>');
 				}
 				else if (inputEl.validity.patternMismatch) {
-					_frmrow.addClass('is-error').find('.frm-error').html('<span>Enter the correct structure</span>');
+					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.patternMismatch +'</span>');
 				}
 				else if (inputEl.validity.tooShort) {
-					_frmrow.addClass('is-error').find('.frm-error').html('<span>Enter the correct amount</span>');
+					_frmrow.addClass('is-error').find('.frm-error').html('<span>'+ contentError.tooShort +'</span>');
 				} else {
 					_frmrow.removeClass('is-error').find('.frm-error span').hide();
 				}
 			}
+			showError()
 		};
 	});
 </script>
